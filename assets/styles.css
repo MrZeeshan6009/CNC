@@ -1,0 +1,427 @@
+/* ==========================================================================
+   CNC Intelligence Workbench — engineering inspection workstation theme
+   Palette: graphite base, steel-blue technical, amber review, red conflict,
+            green verified. No gradients, no decorative motion.
+   ========================================================================== */
+
+:root {
+  --cnc-bg: #0E1114;
+  --cnc-surface: #161A1F;
+  --cnc-surface-2: #1C2228;
+  --cnc-line: #2A3138;
+  --cnc-line-soft: #22282E;
+  --cnc-text: #DCE3EA;
+  --cnc-muted: #8794A1;
+  --cnc-steel: #4D9FD6;
+  --cnc-amber: #E0A03C;
+  --cnc-red: #D9553F;
+  --cnc-green: #46A87A;
+  --cnc-mono: "JetBrains Mono", "Cascadia Mono", "SF Mono", Consolas, monospace;
+}
+
+/* Engineering grid texture on the workspace. */
+.stApp {
+  background-color: var(--cnc-bg);
+  background-image:
+    linear-gradient(rgba(140, 170, 200, 0.030) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(140, 170, 200, 0.030) 1px, transparent 1px);
+  background-size: 26px 26px;
+  background-attachment: fixed;
+}
+
+.block-container {
+  /* Must clear Streamlit's fixed 60px header or the top bar hides underneath it. */
+  padding-top: 4.4rem;
+  padding-bottom: 6rem;
+  max-width: 1560px;
+}
+
+#MainMenu, footer, [data-testid="stToolbar"], [data-testid="stAppDeployButton"] { display: none !important; }
+[data-testid="stDecoration"] { display: none !important; }
+
+html, body, [class*="css"] {
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  color: var(--cnc-text);
+}
+
+h1, h2, h3, h4 { letter-spacing: -0.01em; }
+h1 { font-size: 1.6rem; }
+h2 { font-size: 1.22rem; }
+h3 { font-size: 1.02rem; }
+
+/* ---------- top bar ---------- */
+.cnc-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 0 10px 0;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--cnc-line);
+}
+.cnc-brand { display: flex; align-items: baseline; gap: 10px; }
+.cnc-brand .mark {
+  font-family: var(--cnc-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--cnc-steel);
+  border: 1px solid rgba(77, 159, 214, 0.45);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+.cnc-brand .name {
+  font-size: 15px;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+  color: var(--cnc-text);
+}
+.cnc-brand .sub {
+  font-size: 11.5px;
+  color: var(--cnc-muted);
+  letter-spacing: 0.04em;
+}
+.cnc-topbar-meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--cnc-mono);
+  font-size: 10.5px;
+  color: var(--cnc-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------- hero ---------- */
+.cnc-hero { padding: 46px 0 6px 0; max-width: 780px; }
+.cnc-hero .eyebrow {
+  font-family: var(--cnc-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cnc-steel);
+  margin-bottom: 14px;
+}
+.cnc-hero h1 {
+  font-size: 2.15rem;
+  line-height: 1.12;
+  margin: 0 0 12px 0;
+  font-weight: 680;
+}
+.cnc-hero p {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--cnc-muted);
+  margin: 0 0 6px 0;
+}
+
+.cnc-section-label {
+  font-family: var(--cnc-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cnc-muted);
+  margin: 18px 0 6px 0;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--cnc-line-soft);
+}
+
+/* ---------- pills / badges ---------- */
+.cnc-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 1px 8px;
+  border-radius: 3px;
+  border: 1px solid currentColor;
+  font-family: var(--cnc-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.cnc-pill.sm { font-size: 9px; padding: 0 6px; letter-spacing: 0.09em; }
+.cnc-pill .dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: currentColor; display: inline-block;
+}
+
+/* ---------- source cards ---------- */
+.cnc-card {
+  background: var(--cnc-surface);
+  border: 1px solid var(--cnc-line);
+  border-left: 3px solid var(--cnc-line);
+  border-radius: 4px;
+  padding: 10px 12px;
+  min-height: 104px;
+}
+.cnc-card .card-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  margin-bottom: 7px;
+}
+.cnc-card .card-title {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.03em;
+  color: var(--cnc-text); text-transform: uppercase;
+}
+.cnc-card .card-line {
+  font-family: var(--cnc-mono);
+  font-size: 11px;
+  color: var(--cnc-muted);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+.cnc-card .card-line strong { color: var(--cnc-text); font-weight: 600; }
+
+/* ---------- key/value rows (result panel) ---------- */
+.cnc-kv {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--cnc-line-soft);
+  font-size: 12px;
+}
+.cnc-kv .k {
+  color: var(--cnc-muted); text-transform: uppercase;
+  letter-spacing: 0.07em; font-size: 9.5px; white-space: nowrap;
+}
+.cnc-kv .v {
+  font-family: var(--cnc-mono); color: var(--cnc-text);
+  text-align: right; overflow-wrap: anywhere;
+}
+
+/* ---------- findings ---------- */
+.cnc-finding {
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  gap: 9px;
+  align-items: start;
+  padding: 7px 0;
+  border-bottom: 1px dashed var(--cnc-line-soft);
+}
+.cnc-finding:last-child { border-bottom: none; }
+.cnc-finding .ft { font-size: 12px; line-height: 1.45; color: var(--cnc-text); }
+.cnc-finding .fc {
+  font-family: var(--cnc-mono); font-size: 9.5px; color: var(--cnc-muted);
+  letter-spacing: 0.06em; text-transform: uppercase; display: block; margin-top: 2px;
+}
+
+/* ---------- callouts ---------- */
+.cnc-callout {
+  border-radius: 3px;
+  padding: 8px 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-left: 3px solid;
+  margin: 8px 0;
+}
+.cnc-callout .lead {
+  font-family: var(--cnc-mono); font-size: 10px; letter-spacing: 0.11em;
+  text-transform: uppercase; display: block; margin-bottom: 3px; font-weight: 600;
+}
+
+/* ---------- monospace helpers ---------- */
+.cnc-mono { font-family: var(--cnc-mono); }
+.cnc-muted { color: var(--cnc-muted); }
+.cnc-dim { color: var(--cnc-muted); font-size: 11.5px; }
+
+/* ---------- workspace header ---------- */
+.cnc-part-head {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 6px 0 9px 0;
+  border-bottom: 1px solid var(--cnc-line);
+  margin-bottom: 10px;
+}
+.cnc-part-id {
+  font-family: var(--cnc-mono);
+  font-size: 19px; font-weight: 700; letter-spacing: 0.03em; color: #fff;
+}
+.cnc-part-id .lbl {
+  font-family: var(--cnc-mono); font-size: 9.5px; letter-spacing: 0.18em;
+  color: var(--cnc-muted); display: block; margin-bottom: 1px; font-weight: 500;
+}
+
+/* ---------- part list ----------
+   Streamlit puts the widget key on the element container, so st-key-part_selector
+   is the hook that actually reaches the radio widget. */
+.st-key-part_selector [role="radiogroup"] { gap: 1px; }
+.st-key-part_selector label {
+  padding: 5px 8px !important;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  margin-bottom: 1px;
+  width: 100%;
+}
+.st-key-part_selector label:hover {
+  background: var(--cnc-surface-2);
+  border-color: var(--cnc-line);
+}
+.st-key-part_selector [data-testid="stMarkdownContainer"] p {
+  font-family: var(--cnc-mono);
+  font-size: 11.5px;
+  line-height: 1.5;
+  white-space: pre;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- evidence tables ---------- */
+.cnc-evidence-row {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--cnc-line-soft);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+.cnc-evidence-row .loc {
+  font-family: var(--cnc-mono); font-size: 10.5px; color: var(--cnc-steel);
+  overflow-wrap: anywhere;
+}
+
+/* ---------- citation list ---------- */
+.cnc-citation {
+  display: flex; align-items: baseline; gap: 8px;
+  font-family: var(--cnc-mono); font-size: 11px;
+  padding: 3px 0; color: var(--cnc-text);
+  border-bottom: 1px dotted var(--cnc-line-soft);
+}
+.cnc-citation .src {
+  color: var(--cnc-steel); min-width: 34px; text-transform: uppercase;
+  font-size: 9.5px; letter-spacing: 0.08em;
+}
+
+/* ---------- buttons ---------- */
+.stButton > button {
+  border-radius: 3px;
+  border: 1px solid var(--cnc-line);
+  background: var(--cnc-surface-2);
+  color: var(--cnc-text);
+  font-size: 12.5px;
+  font-weight: 550;
+  padding: 0.36rem 0.75rem;
+  transition: border-color 0.12s ease, background 0.12s ease;
+}
+.stButton > button:hover {
+  border-color: var(--cnc-steel);
+  color: #fff;
+  background: #212932;
+}
+.stButton > button[kind="primary"] {
+  background: #1F5B84;
+  border-color: #2F7FB4;
+  color: #F2F7FB;
+}
+.stButton > button[kind="primary"]:hover { background: #246A99; }
+
+/* download button matches */
+.stDownloadButton > button {
+  border-radius: 3px; font-size: 12px;
+  border: 1px solid var(--cnc-line); background: transparent; color: var(--cnc-muted);
+}
+
+/* ---------- inputs ---------- */
+[data-baseweb="input"] input, [data-baseweb="select"] > div {
+  background: var(--cnc-surface) !important;
+  border-color: var(--cnc-line) !important;
+  border-radius: 3px !important;
+  font-family: var(--cnc-mono);
+  font-size: 12.5px !important;
+}
+[data-baseweb="input"] input:focus { border-color: var(--cnc-steel) !important; }
+
+/* ---------- metrics ---------- */
+[data-testid="stMetricValue"] {
+  font-family: var(--cnc-mono);
+  font-size: 1.15rem !important;
+  color: var(--cnc-text);
+}
+[data-testid="stMetricLabel"] {
+  font-size: 9.5px !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cnc-muted) !important;
+}
+
+/* ---------- tabs ---------- */
+.stTabs [data-baseweb="tab-list"] {
+  gap: 2px;
+  border-bottom: 1px solid var(--cnc-line);
+}
+.stTabs [data-baseweb="tab"] {
+  height: 34px;
+  padding: 0 12px;
+  font-size: 12px;
+  font-family: var(--cnc-mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cnc-muted);
+}
+.stTabs [aria-selected="true"] { color: var(--cnc-steel) !important; }
+
+/* ---------- expander ---------- */
+[data-testid="stExpander"] {
+  border: 1px solid var(--cnc-line);
+  border-radius: 4px;
+  background: var(--cnc-surface);
+}
+[data-testid="stExpander"] summary {
+  font-size: 12px;
+  font-family: var(--cnc-mono);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--cnc-muted);
+}
+
+/* ---------- chat ---------- */
+/* Avatars render as large coloured blocks and add nothing here. */
+[data-testid="stChatMessageAvatar"],
+[data-testid="stChatMessageAvatarUser"],
+[data-testid="stChatMessageAvatarAssistant"] { display: none !important; }
+[data-testid="stChatMessage"] {
+  background: var(--cnc-surface);
+  border: 1px solid var(--cnc-line);
+  border-radius: 4px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  gap: 0 !important;
+}
+[data-testid="stChatMessage"] > div:first-child:empty { display: none; }
+[data-testid="stChatMessage"] [data-testid="stMarkdownContainer"] p {
+  font-size: 13px;
+  line-height: 1.55;
+}
+[data-testid="stChatInput"] textarea {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 13px;
+}
+.stChatInputContainer, [data-testid="stChatInput"] {
+  border-radius: 4px;
+}
+
+/* ---------- alerts tuned to palette ---------- */
+[data-testid="stAlert"] {
+  border-radius: 3px;
+  font-size: 12.5px;
+  padding: 8px 12px;
+  border-left-width: 3px;
+}
+
+/* ---------- scrollbars ---------- */
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-track { background: #101317; }
+::-webkit-scrollbar-thumb { background: #2E363E; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #3C4650; }
+
+/* ---------- tables ---------- */
+[data-testid="stDataFrame"] { border: 1px solid var(--cnc-line); border-radius: 3px; }
+
+/* ---------- divider ---------- */
+hr { border-color: var(--cnc-line); }
+
+/* ---------- footer note ---------- */
+.cnc-foot {
+  margin-top: 26px; padding-top: 10px;
+  border-top: 1px solid var(--cnc-line-soft);
+  font-size: 10.5px; color: #5F6B77;
+  font-family: var(--cnc-mono); letter-spacing: 0.04em;
+}

@@ -1,0 +1,12 @@
+.env
+.env.bak
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.streamlit/secrets.toml
+tmp/
+tools/*.exe
+dist/*.zip
+cloudflare/node_modules/
+.wrangler/

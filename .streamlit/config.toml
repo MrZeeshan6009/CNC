@@ -1,0 +1,15 @@
+[server]
+headless = true
+# Demo datasets are small; 60 MB leaves room for a ZIP plus rendered pages.
+maxUploadSize = 60
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+base = "dark"
+primaryColor = "#4D9FD6"
+backgroundColor = "#111417"
+secondaryBackgroundColor = "#191D22"
+textColor = "#D9E1E8"
+font = "sans serif"
